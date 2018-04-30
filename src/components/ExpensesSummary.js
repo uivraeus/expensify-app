@@ -9,11 +9,9 @@ export const ExpensesSummary = (props) => {
   const expenseStr = props.expenseCount === 1 ? 'expense' : 'expenses';
   const totalStr = numeral(props.expensesTotal/100).format('$0,0.00');
   return (
-    props.expenseCount > 0 && (
-      <div>
-        <p>Viewing {props.expenseCount} {expenseStr} totalling {totalStr}</p>
-      </div>
-    )
+    <div>
+      <h1>Viewing {props.expenseCount} {expenseStr} totalling {totalStr}</h1>
+    </div>
   );
 };
 
