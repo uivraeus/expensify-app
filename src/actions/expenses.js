@@ -37,3 +37,40 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+//SET_EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+// returning a function (not an object). requires that redux-thunk is used
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref(`expenses`).once('value').
+    then((snapshot) => {
+      const expenses = []
+      snapshot.forEach((childSnapshot) => {
+        expenses.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      })
+      dispatch(setExpenses(expenses)); 
+    });
+  };
+
+  // database.ref(`expenses`).once('value')
+  // .then((snapshot) => {
+  //   console.log(">>> startSetExpenses: database once() resolved");
+  
+  //   const dummyExpense = {
+  //     id: 1000,
+  //     description:'Dummy',
+  //     note:'',
+  //     amount: 1234,
+  //     createdAt: 123456789
+  //   };
+  //   dispatch(setExpenses([dummyExpense])); //TBD: how to populate this? using "on" for each child?...  
+  // });  
+};
