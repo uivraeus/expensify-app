@@ -4,9 +4,10 @@ import {
   startAddExpense, 
   addExpense, 
   editExpense, 
-  removeExpense, 
+  removeExpense,
+  startRemoveExpense,
   setExpenses, 
-  startSetExpenses
+  startSetExpenses,
 } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
@@ -18,7 +19,6 @@ beforeEach((done) => {
   expenses.forEach(({ id, description, note, amount, createdAt }) => {
     expensesData[id] = { description, note, amount, createdAt }
   });
-  //console.log(expensesData);
   database.ref('expenses').set(expensesData).then(() => done());
 });
 
@@ -29,6 +29,25 @@ test('should setup removeExpense object', () => {
     id: '123abc'
   })
 });
+
+test('should remove expense from database and from store', (done) => {
+  const store = createMockStore({});
+  store.dispatch(startRemoveExpense({ id: expenses[1].id })).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: 'REMOVE_EXPENSE',
+      id: expenses[1].id
+    });
+
+    // Check that item not in database anymore
+    return database.ref(`expenses/${actions[0].id}`).once('value')
+  })
+  .then((snapshot) => {
+    expect(snapshot.val()).toBe(null)
+    done();
+  });
+});
+
 
 test('should setup editExpense object', () => {
   const action = editExpense('123', { description: 'abc', note: 'xyz' });
