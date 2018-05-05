@@ -55,7 +55,7 @@ export const editExpense = (id, updates) => ({
 export const startEditExpense = (id, updates) => {
   return (dispatch) => {
     //"return" will enable promise-chaining which we make use of for testing
-    return database.ref(`expenses/${id}`).set(updates)
+    return database.ref(`expenses/${id}`).update(updates)
     .then((ref) => {
       dispatch(editExpense(id, updates));
     })
