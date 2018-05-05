@@ -51,6 +51,17 @@ export const editExpense = (id, updates) => ({
   updates
 });
 
+// returning a function (not an object). requires that redux-thunk is used
+export const startEditExpense = (id, updates) => {
+  return (dispatch) => {
+    //"return" will enable promise-chaining which we make use of for testing
+    return database.ref(`expenses/${id}`).set(updates)
+    .then((ref) => {
+      dispatch(editExpense(id, updates));
+    })
+  };
+};
+
 //SET_EXPENSES
 export const setExpenses = (expenses) => ({
   type: 'SET_EXPENSES',
