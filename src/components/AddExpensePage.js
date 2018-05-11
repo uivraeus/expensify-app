@@ -16,7 +16,7 @@ import { startAddExpense } from '../actions/expenses';
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
     this.props.startAddExpense(expense);
-    this.props.history.push('/'); //goto dashboard
+    this.props.history.push('/'); // /dashboard... or, route to / and rely on re-routing when loged in?
   };
   render() {
     return (

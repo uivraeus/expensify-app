@@ -13,7 +13,7 @@ export class EditExpensePage extends React.Component {
   };
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/'); //goto dashboard
+    this.props.history.push('/'); // /dashboard... or, route to / and rely on re-routing when loged in?
   };
   render() {
     return (
