@@ -1,0 +1,16 @@
+// the ">*" construct below applies to all _direct_ decentants of "form"
+// (i.e. we don't need to define className for each of the form-parts 
+// note that the button is not _direct_  under the form but instead under
+// a div which implies that it is not affected.
+.form {
+  display: flex;
+  flex-direction: column;
+  >* {
+    margin-bottom: $m-size;
+  }
+}
+
+.form__error {
+  margin: 0 0 $m-size 0;
+  font-style: italic
+}

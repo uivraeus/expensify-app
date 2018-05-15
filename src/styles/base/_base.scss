@@ -1,11 +1,20 @@
+// General tweak
+// Default box-sizing is content-box but then padding and margin is added
+// outside of height/width instead of inside
+* {
+  box-sizing: border-box;
+}
+
 // 62.5% -> 1 rem == 10px
 html {
   font-size: 62.5%;
 }
 
 body {
+  color: $dark-grey;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
+  line-height: 1.6;
 }
 
 button {
