@@ -12,7 +12,7 @@ export class EditExpensePage extends React.Component {
     queryDelete: false
   };
 
-  onClick = () => {
+  onRemoveClick = () => {
     this.setState(() => ({queryDelete: true}))  
   };
 
@@ -44,7 +44,7 @@ export class EditExpensePage extends React.Component {
             expense={this.props.expense}
             onSubmit={this.onSubmit}
           />
-          <button className="button button--secondary" onClick = {this.onClick}>Remove Expense</button>
+          <button className="button button--secondary" onClick = {this.onRemoveClick}>Remove Expense</button>
         </div>
         <DeleteModal queryConfirm={this.state.queryDelete} onYes={this.onDeleteConfirm} onNo={this.onDeleteAbort}/>
       </div>
