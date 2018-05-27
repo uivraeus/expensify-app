@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DeleteModal component with modal active 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="modal"
+  closeTimeoutMS={200}
+  contentLabel="Confirm deletion"
+  isOpen={true}
+  onRequestClose={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnOverlayClick={true}
+>
+  <h3
+    className="modal__title"
+  >
+    Do you really want to delete the expense?
+  </h3>
+  <div
+    className="modal__button-group"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      No
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+  </div>
+</Modal>
+`;

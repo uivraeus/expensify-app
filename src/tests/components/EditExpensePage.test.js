@@ -31,8 +31,6 @@ test('should handle onSubmit', () => {
 test('should handle onRemoveClick, i.e. launch modal query', () => {
   wrapper.find('button').simulate('click');
   expect(wrapper.find('DeleteModal').prop('queryConfirm')).toBe(true);
-  //expect(history.push).toHaveBeenLastCalledWith('/');
-  //expect(startRemoveExpense).toHaveBeenLastCalledWith(expense.id);
 });
 
 test('should handle delete abort, i.e. remove the modal query w/o any deletion', () => {
